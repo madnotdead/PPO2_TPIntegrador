@@ -1,8 +1,5 @@
 package model;
 
-import java.util.List;
-import java.util.UUID;
-
 /**
  * @author leandrom
  *
@@ -10,13 +7,10 @@ import java.util.UUID;
 public class User {
 
 	private String id = UUID.randomUUID().toString();
-			
 	private String email;
-	
 	private String fullName;
-	
 	private String phoneNumber;
-	
+
 	public User(final String fullName, final String email, final String phoneNumber) {
 		this.fullName = fullName;
 		this.email = email;

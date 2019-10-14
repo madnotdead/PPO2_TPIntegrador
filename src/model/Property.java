@@ -1,42 +1,41 @@
 package model;
 
 import java.util.List;
+
+import auxiliarObjects.PropertyKind;
+import auxiliarObjects.Service;
 import model.Address;
 
 public class Property {
 
-	private int type;
-	
+	private PropertyKind type;
 	private Address address;
-	
-	private List<String> services;
-	
+	private List<Service> services;
 	private int capacity;
-	
-	private String userId;
+	private User owner;
 	
 	/**
 	 * @return the type
 	 */
-	public int getType() {
+	public PropertyKind getType() {
 		return type;
 	}
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(int type) {
+	public void setType(PropertyKind type) {
 		this.type = type;
 	}
 	/**
 	 * @return the services
 	 */
-	public List<String> getServices() {
+	public List<Service> getServices() {
 		return services;
 	}
 	/**
 	 * @param services the services to set
 	 */
-	public void setServices(List<String> services) {
+	public void setServices(List<Service> services) {
 		this.services = services;
 	}
 	/**
@@ -54,14 +53,14 @@ public class Property {
 	/**
 	 * @return the userId
 	 */
-	public String getUserId() {
-		return userId;
+	public User geOwner() {
+		return owner;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setOwner(User anOwner) {
+		this.owner = anOwner;
 	}
 	/**
 	 * @return the address
