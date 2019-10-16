@@ -8,30 +8,37 @@ public class Address {
 	
 	private String street;
 	
+	private Integer number;
+	
+	
+	/**
+	 * @param country
+	 * @param city
+	 * @param street
+	 */
+	public Address(String country, String city, String street, int number) {
+		super();
+		this.country = country;
+		this.city = city;
+		this.street = street;
+		this.number = number;
+	}
+	
+
 	/**
 	 * @return the country
 	 */
 	public String getCountry() {
 		return country;
 	}
-	/**
-	 * @param country the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
+
 	/**
 	 * @return the city
 	 */
 	public String getCity() {
 		return city;
 	}
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity(String city) {
-		this.city = city;
-	}
+
 	/**
 	 * @return the street
 	 */
@@ -39,10 +46,9 @@ public class Address {
 		return street;
 	}
 	/**
-	 * @param street the street to set
+	 * @return the number
 	 */
-	public void setStreet(String street) {
-		this.street = street;
+	public Integer getNumber() {
+		return number;
 	}
-
 }

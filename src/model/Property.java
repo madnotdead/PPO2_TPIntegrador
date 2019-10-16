@@ -15,6 +15,21 @@ public class Property {
 	private User owner;
 	
 	/**
+	 * @param type
+	 * @param address
+	 * @param services
+	 * @param capacity
+	 * @param owner
+	 */
+	public Property(PropertyKind type, Address address, List<Service> services, int capacity, User owner) {
+		super();
+		this.type = type;
+		this.address = address;
+		this.services = services;
+		this.capacity = capacity;
+		this.owner = owner;
+	}
+	/**
 	 * @return the type
 	 */
 	public PropertyKind getType() {
@@ -53,15 +68,10 @@ public class Property {
 	/**
 	 * @return the userId
 	 */
-	public User geOwner() {
+	public User getOwner() {
 		return owner;
 	}
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setOwner(User anOwner) {
-		this.owner = anOwner;
-	}
+
 	/**
 	 * @return the address
 	 */
