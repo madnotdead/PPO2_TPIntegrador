@@ -1,4 +1,4 @@
-package auxiliarObjectsTests;
+package auxiliarObjects;
 
 import org.junit.jupiter.api.Test;
 
