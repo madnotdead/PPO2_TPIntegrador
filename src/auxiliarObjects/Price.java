@@ -1,23 +1,21 @@
 package auxiliarObjects;
 
 public class Price {
-	String currency;
-	Integer amount;
+	Currency currency;
+	Double amount;
 	/**
 	 * @param currency
 	 * @param amount
 	 */
-	public Price(String currency, Integer amount) {
+	public Price(Currency aCurrency, Double amount) {
 		super();
-		this.currency = currency;
+		this.currency = aCurrency;
 		this.amount = amount;
 	}
-	public String getCurrency() {
+	public Currency getCurrency() {
 		return currency;
 	}
-	public Integer getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
-	
-
 }
