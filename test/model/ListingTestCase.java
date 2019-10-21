@@ -3,6 +3,7 @@ package model;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -15,40 +16,36 @@ class ListingTestCase {
 	Property mockProperty;
 	Price mockPrice;
 	
+	
 	@BeforeEach
 	void setUp() {
 		mockProperty = mock(Property.class);
 		mockPrice = mock(Price.class);
-		listing1 = new Listing(mockProperty, LocalTime.now(), mockPrice, LocalDate.now(), LocalDate.now());
+		listing1 = new Listing(mockProperty, LocalTime.now(), mockPrice, LocalDate.of(2019, 12, 1), LocalDate.of(2019, 12, 20));
 	}
 	@Test
 	void testGetProperty() {
-		fail("Not yet implemented");
+		assertEquals(listing1.getProperty(), mockProperty);
 	}
 
 	@Test
 	void testGetCheckInTime() {
-		fail("Not yet implemented");
+		assertEquals(listing1.getCheckInTime(), LocalTime.now());
 	}
 
 	@Test
 	void testGetPrice() {
-		fail("Not yet implemented");
+		assertEquals(listing1.getPrice(), mockPrice);
 	}
 
 	@Test
-	void testDisable() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetAvailableFRom() {
-		fail("Not yet implemented");
+	void testGetAvailableFrom() {
+		assertEquals(listing1.getAvailableFRom(), LocalDate.of(2019, 12, 1));
 	}
 
 	@Test
 	void testGetAvailableTo() {
-		fail("Not yet implemented");
+		assertEquals(listing1.getAvailableTo(), LocalDate.of(2019, 12, 20));
 	}
 
 }

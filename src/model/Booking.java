@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 /* Booking/Reserva:
 Estados
-	Concretada (alquilada)
 	Cancelada
 	Finalizada
 */
@@ -26,7 +25,7 @@ public class Booking {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.tenant = tenant;
-		this.state = new PendingApprovalBookingState
+		this.state = new PendingApprovalBookingState();
 	}
 	public Listing getListing() {
 		return listing;

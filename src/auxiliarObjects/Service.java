@@ -8,4 +8,8 @@ public class Service {
 	public Service(final String aName) {
 		this.name = aName;
 	}
+
+	public String getService() {
+		return this.name;
+	}
 }

@@ -8,4 +8,8 @@ public class PropertyKind {
 	public PropertyKind(final String aName) {
 		this.name = aName;
 	}
+	
+	public String getType() {
+		return this.name;
+	}
 }
