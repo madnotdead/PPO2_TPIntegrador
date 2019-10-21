@@ -11,7 +11,7 @@ public class Property {
 	private PropertyKind type;
 	private Address address;
 	private List<Service> services;
-	private int capacity;
+	private Integer capacity;
 	private User owner;
 	
 	/**
@@ -21,7 +21,7 @@ public class Property {
 	 * @param capacity
 	 * @param owner
 	 */
-	public Property(PropertyKind type, Address address, List<Service> services, int capacity, User owner) {
+	public Property(PropertyKind type, Address address, List<Service> services, Integer capacity, User owner) {
 		super();
 		this.type = type;
 		this.address = address;
@@ -56,13 +56,13 @@ public class Property {
 	/**
 	 * @return the capacity
 	 */
-	public int getCapacity() {
+	public Integer getCapacity() {
 		return capacity;
 	}
 	/**
 	 * @param capacity the capacity to set
 	 */
-	public void setCapacity(int capacity) {
+	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
 	}
 	/**
