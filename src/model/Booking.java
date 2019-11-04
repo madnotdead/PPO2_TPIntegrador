@@ -25,7 +25,7 @@ public class Booking {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.tenant = tenant;
-		this.state = new PendingApprovalBookingState();
+		this.state = new BookingState("Pending Aproval");
 	}
 	public Listing getListing() {
 		return listing;
