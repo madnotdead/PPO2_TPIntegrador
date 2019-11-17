@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-class BookingTestCase {
+class BookingTest {
 	Booking booking1;
 	Listing listing1;
 	User tenant1;

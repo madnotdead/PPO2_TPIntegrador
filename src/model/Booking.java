@@ -12,7 +12,7 @@ public class Booking {
 	private LocalDate checkInDate;
 	private LocalDate checkOutDate;
 	private User tenant;
-	private BookingState state;
+	private IBookingState state;
 	/**
 	 * @param listing
 	 * @param checkInDate
@@ -25,7 +25,7 @@ public class Booking {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.tenant = tenant;
-		this.state = new BookingState("Pending Aproval");
+		this.state = new PendingBookingState();
 	}
 	public Listing getListing() {
 		return listing;
@@ -39,7 +39,7 @@ public class Booking {
 	public User getTenant() {
 		return tenant;
 	}
-	public BookingState getState() {
+	public IBookingState getState() {
 		return state;
 	}
 	

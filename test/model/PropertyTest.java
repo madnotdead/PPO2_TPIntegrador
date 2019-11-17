@@ -1,15 +1,16 @@
 package model;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import auxiliarObjects.Address;
 import auxiliarObjects.PropertyKind;
 import auxiliarObjects.Service;
-import model.Address;
 import model.User;
 import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class PropertyTestCase {
+class PropertyTest {
 	PropertyKind kindMock = mock(PropertyKind.class);
 	Address addressMock = mock(Address.class);
 	User userMock = mock(User.class);

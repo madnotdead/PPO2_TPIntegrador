@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 /**
@@ -12,11 +13,13 @@ public class User {
 	private String email;
 	private String fullName;
 	private String phoneNumber;
+	private LocalDate registrationDate;
 
 	public User(final String fullName, final String email, final String phoneNumber) {
 		this.fullName = fullName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.registrationDate = LocalDate.now();
 	}
 	
 	/**

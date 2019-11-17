@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import auxiliarObjects.Price;
 
-class ListingTestCase {
+class ListingTest {
 	Listing listing1;
 	Property mockProperty;
 	Price mockPrice;

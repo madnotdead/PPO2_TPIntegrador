@@ -2,9 +2,9 @@ package model;
 
 import java.util.List;
 
+import auxiliarObjects.Address;
 import auxiliarObjects.PropertyKind;
 import auxiliarObjects.Service;
-import model.Address;
 
 public class Property {
 
