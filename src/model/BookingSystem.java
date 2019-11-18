@@ -14,15 +14,12 @@ public class BookingSystem {
 	private List<PropertyKind> propertiesKinds = new ArrayList<PropertyKind>();
 	private List<Country> countries = new ArrayList<Country>();
 	private List<City> cities = new ArrayList<City>();
-	private List<Currency> currencies = new ArrayList<Currency>();
-	private List<ReviewCategory> reviewCategories = new ArrayList<ReviewCategory>(); 
 
 	private List<Property> properties = new ArrayList<Property>();
 	private List<Listing> listings = new ArrayList<Listing>();
 	private List<Booking> bookings = new ArrayList<Booking>();
-	private List<TenantToPropertyReview> tenantToPropertyReviews = new ArrayList<TenantToPropertyReview>();
-	private List<TenantToOwnerReview> tenantToOwnerReviews = new ArrayList<TenantToOwnerReview>();
-	private List<OwnerToTenantReview> ownerToTenantReviews = new ArrayList<OwnerToTenantReview>();
+
+	private RankingSubsystem rankingSubsystem = RankingSubsystem.getInstance();
 
 	private BookingSystem() {}
 
@@ -32,4 +29,19 @@ public class BookingSystem {
         }
         return uniqueInstance;
     }
+
+	public void addPropertyKind(PropertyKind aKind) {
+		this.propertiesKinds.add(aKind);
+	}
+	public List<PropertyKind> getPropertiesKinds() {
+		return propertiesKinds;
+	}
+
+	public void addService(Service aService) {
+		this.services.add(aService);
+	}
+	public List<Service> getServices() {
+		return services;
+	}
+
 }

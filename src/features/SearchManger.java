@@ -36,12 +36,12 @@ public class SearchManger {
 		
 		if (searchCriteria.getMinPrice() != null) {
 			listingsStream = listingsStream
-					.filter( p -> p.getPrice().getAmount() >= searchCriteria.getMinPrice().getAmount());
+					.filter( p -> p.getPrice() >= searchCriteria.getMinPrice());
 		}
 		
 		if (searchCriteria.getMaxPrice() != null) {
 			listingsStream = listingsStream
-					.filter( p -> p.getPrice().getAmount() <= searchCriteria.getMaxPrice().getAmount());
+					.filter( p -> p.getPrice() <= searchCriteria.getMaxPrice());
 		}
 		
 		if (searchCriteria.getTo() != null) {

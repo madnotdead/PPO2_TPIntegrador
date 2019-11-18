@@ -2,16 +2,14 @@ package features;
 
 import java.time.LocalDate;
 
-import auxiliarObjects.Price;
-
 public class SearchCriteria {
 
 	private String city;
 	private LocalDate from;
 	private LocalDate to;
 	private Integer capacity;
-	private Price minPrice;
-	private Price maxPrice;
+	private Double minPrice;
+	private Double maxPrice;
 	
 	/**
 	 * @return the city
@@ -30,28 +28,28 @@ public class SearchCriteria {
 	/**
 	 * @return the minPrice
 	 */
-	public Price getMinPrice() {
+	public Double getMinPrice() {
 		return minPrice;
 	}
 
 	/**
 	 * @param minPrice the minPrice to set
 	 */
-	public void setMinPrice(Price minPrice) {
+	public void setMinPrice(Double minPrice) {
 		this.minPrice = minPrice;
 	}
 
 	/**
 	 * @return the maxPrice
 	 */
-	public Price getMaxPrice() {
+	public Double getMaxPrice() {
 		return maxPrice;
 	}
 
 	/**
 	 * @param maxPrice the maxPrice to set
 	 */
-	public void setMaxPrice(Price maxPrice) {
+	public void setMaxPrice(Double maxPrice) {
 		this.maxPrice = maxPrice;
 	}
 

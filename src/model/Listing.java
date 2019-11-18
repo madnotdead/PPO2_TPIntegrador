@@ -1,10 +1,10 @@
 package model;
 import java.time.*;
-import auxiliarObjects.Price;
+
 public class Listing {
 	private Property property;
 	private LocalTime checkInAndOutTime;
-	private Price price;
+	private Double price;
 	private LocalDate availableFrom;
 	private LocalDate availableTo;
 	private Boolean isActive;
@@ -15,7 +15,7 @@ public class Listing {
 	 * @param price
 	 * @param availability
 	 */
-	public Listing(Property property, LocalTime checkInAndOutTime, Price price, LocalDate startDate, LocalDate endDate) {
+	public Listing(Property property, LocalTime checkInAndOutTime, Double price, LocalDate startDate, LocalDate endDate) {
 		super();
 		this.property = property;
 		this.checkInAndOutTime = checkInAndOutTime;
@@ -31,7 +31,7 @@ public class Listing {
 	public LocalTime getCheckInTime() {
 		return checkInAndOutTime;
 	}
-	public Price getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 	public void disable(){

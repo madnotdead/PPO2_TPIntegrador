@@ -9,19 +9,14 @@ import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import auxiliarObjects.Price;
-
 class ListingTest {
 	Listing listing1;
 	Property mockProperty;
-	Price mockPrice;
-	
 	
 	@BeforeEach
 	void setUp() {
 		mockProperty = mock(Property.class);
-		mockPrice = mock(Price.class);
-		listing1 = new Listing(mockProperty, LocalTime.now(), mockPrice, LocalDate.of(2019, 12, 1), LocalDate.of(2019, 12, 20));
+		listing1 = new Listing(mockProperty, LocalTime.now(), 2500.0, LocalDate.of(2019, 12, 1), LocalDate.of(2019, 12, 20));
 	}
 	@Test
 	void testGetProperty() {
@@ -35,7 +30,7 @@ class ListingTest {
 
 	@Test
 	void testGetPrice() {
-		assertEquals(listing1.getPrice(), mockPrice);
+		assertEquals(listing1.getPrice(), 2500.0);
 	}
 
 	@Test
@@ -47,5 +42,4 @@ class ListingTest {
 	void testGetAvailableTo() {
 		assertEquals(listing1.getAvailableTo(), LocalDate.of(2019, 12, 20));
 	}
-
 }
