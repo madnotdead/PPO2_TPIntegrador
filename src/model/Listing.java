@@ -3,45 +3,33 @@ import java.time.*;
 
 public class Listing {
 	private Property property;
-	private LocalTime checkInAndOutTime;
+	private LocalTime checkInTime;
+	private LocalTime checkOutTime;
 	private Double price;
-	private LocalDate availableFrom;
-	private LocalDate availableTo;
-	private Boolean isActive;
-	
-	/**
-	 * @param property
-	 * @param checkInTime
-	 * @param price
-	 * @param availability
-	 */
-	public Listing(Property property, LocalTime checkInAndOutTime, Double price, LocalDate startDate, LocalDate endDate) {
+	private Boolean active;
+
+	public Listing(Property property, LocalTime checkIn, LocalTime checkOut, Double price) {
 		super();
 		this.property = property;
-		this.checkInAndOutTime = checkInAndOutTime;
+		this.checkInTime = checkIn;
+		this.checkOutTime = checkOut;
 		this.price = price;
-		this.availableFrom = startDate;
-		this.availableTo = endDate;
-		this.isActive = true;
+		this.active = true;
 	}
 	
 	public Property getProperty() {
 		return property;
 	}
 	public LocalTime getCheckInTime() {
-		return checkInAndOutTime;
+		return checkInTime;
+	}
+	public LocalTime getCheckOutTime() {
+		return checkOutTime;
 	}
 	public Double getPrice() {
 		return price;
 	}
-	public void disable(){
-		this.isActive = false;
+	public void deactivate() {
+		this.active = false;
 	}
-	public LocalDate getAvailableFRom() {
-		return availableFrom;
-	}
-	public LocalDate getAvailableTo() {
-		return availableTo;
-	}
-	
 }

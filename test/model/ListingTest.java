@@ -12,34 +12,31 @@ import org.junit.jupiter.api.Test;
 class ListingTest {
 	Listing listing1;
 	Property mockProperty;
+	LocalTime rightNow;
 	
 	@BeforeEach
 	void setUp() {
 		mockProperty = mock(Property.class);
-		listing1 = new Listing(mockProperty, LocalTime.now(), 2500.0, LocalDate.of(2019, 12, 1), LocalDate.of(2019, 12, 20));
+		rightNow = LocalTime.now();
+		listing1 = new Listing(mockProperty, rightNow, rightNow, 2500.0);
 	}
 	@Test
 	void testGetProperty() {
-		assertEquals(listing1.getProperty(), mockProperty);
+		assertEquals(mockProperty, listing1.getProperty());
 	}
 
 	@Test
 	void testGetCheckInTime() {
-		assertEquals(listing1.getCheckInTime(), LocalTime.now());
+		assertEquals(rightNow, listing1.getCheckInTime());
+	}
+
+	@Test
+	void testGetCheckOutTime() {
+		assertEquals(rightNow, listing1.getCheckOutTime());
 	}
 
 	@Test
 	void testGetPrice() {
-		assertEquals(listing1.getPrice(), 2500.0);
-	}
-
-	@Test
-	void testGetAvailableFrom() {
-		assertEquals(listing1.getAvailableFRom(), LocalDate.of(2019, 12, 1));
-	}
-
-	@Test
-	void testGetAvailableTo() {
-		assertEquals(listing1.getAvailableTo(), LocalDate.of(2019, 12, 20));
+		assertEquals(2500.0, listing1.getPrice());
 	}
 }

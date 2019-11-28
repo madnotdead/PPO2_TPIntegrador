@@ -13,12 +13,7 @@ public class Booking {
 	private LocalDate checkOutDate;
 	private User tenant;
 	private IBookingState state;
-	/**
-	 * @param listing
-	 * @param checkInDate
-	 * @param checkOutDate
-	 * @param tenant
-	 */
+
 	public Booking(Listing listing, LocalDate checkInDate, LocalDate checkOutDate, User tenant) {
 		super();
 		this.listing = listing;

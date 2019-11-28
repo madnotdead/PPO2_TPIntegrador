@@ -22,31 +22,16 @@ public class User {
 		this.registrationDate = LocalDate.now();
 	}
 	
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
 	
-	/**
-	 * @return the fullName
-	 */
 	public String getFullName() {
 		return fullName;
 	}
 	
-	/**
-	 * @return the phoneNumber
-	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
 }

@@ -1,9 +1,10 @@
-package model;
+package rankings;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import auxiliarObjects.ReviewCategory;
+import model.Property;
+import model.User;
 
 public class RankingSubsystem {
 	private static RankingSubsystem uniqueInstance;

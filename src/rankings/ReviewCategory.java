@@ -1,4 +1,4 @@
-package auxiliarObjects;
+package rankings;
 
 public class ReviewCategory {
 	private String name;

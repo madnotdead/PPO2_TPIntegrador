@@ -2,23 +2,14 @@ package auxiliarObjects;
 
 public class Address {
 	
-	private String country;
-	
-	private String city;
+	private City city;
 	
 	private String street;
 	
 	private Integer number;
 	
-	
-	/**
-	 * @param country
-	 * @param city
-	 * @param street
-	 */
-	public Address(String country, String city, String street, int number) {
+	public Address(City city, String street, int number) {
 		super();
-		this.country = country;
 		this.city = city;
 		this.street = street;
 		this.number = number;
@@ -28,14 +19,14 @@ public class Address {
 	/**
 	 * @return the country
 	 */
-	public String getCountry() {
-		return country;
+	public Country getCountry() {
+		return this.city.getCountry();
 	}
 
 	/**
 	 * @return the city
 	 */
-	public String getCity() {
+	public City getCity() {
 		return city;
 	}
 

@@ -6,25 +6,27 @@ import auxiliarObjects.Address;
 
 class AddressTest {
 
-	Address address1 = new Address("Argentina", "Quilmes", "Roque Saenz Peña", 352);
+	Country aCountry = new Country("Australia");
+	City aCity = new City("Sydney", aCountry);
+	Address address1 = new Address(aCity, "Roque Saenz Peña", 352);
 
 	@Test
 	void testGetCountry() {
-		assertEquals(address1.getCountry(), "Argentina");
+		assertEquals(aCountry, address1.getCountry());
 	}
 
 	@Test
 	void testGetCity() {
-		assertEquals(address1.getCity(), "Quilmes");
+		assertEquals(aCity, address1.getCity());
 	}
 
 	@Test
 	void testGetStreet() {
-		assertEquals(address1.getStreet(), "Roque Saenz Peña");
+		assertEquals("Roque Saenz Peña", address1.getStreet());
 	}
 
 	@Test
 	void testGetNumber() {
-		assertEquals(address1.getNumber(),352);;
+		assertEquals(352, address1.getNumber());
 	}
 }

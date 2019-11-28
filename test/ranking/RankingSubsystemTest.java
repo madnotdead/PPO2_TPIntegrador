@@ -1,11 +1,12 @@
-package model;
+package ranking;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.Test;
 
-import auxiliarObjects.ReviewCategory;
+import rankings.RankingSubsystem;
+import rankings.ReviewCategory;
 
 class RankingSubsystemTest {
 

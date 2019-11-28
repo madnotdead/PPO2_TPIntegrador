@@ -20,8 +20,7 @@ public class SearchManger {
 		
 		if (searchCriteria.getCity() != null) {
 			listingsStream = listingsStream
-					.filter( p -> p.getProperty().getAddress().getCity().toLowerCase()
-							.equals(searchCriteria.getCity().toLowerCase()));
+					.filter( p -> p.getProperty().getAddress().getCity().equals(searchCriteria.getCity()));
 		} 
 		
 		if (searchCriteria.getCapacity() != null) {
