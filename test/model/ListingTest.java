@@ -13,18 +13,30 @@ class ListingTest {
 	Listing listing1;
 	Property mockProperty;
 	LocalTime rightNow;
+	LocalDate today;
 	
 	@BeforeEach
 	void setUp() {
 		mockProperty = mock(Property.class);
 		rightNow = LocalTime.now();
-		listing1 = new Listing(mockProperty, rightNow, rightNow, 2500.0);
+		today = LocalDate.now();
+		listing1 = new Listing(mockProperty,today, today, rightNow, rightNow, 2500.0);
 	}
 	@Test
 	void testGetProperty() {
 		assertEquals(mockProperty, listing1.getProperty());
 	}
 
+	@Test
+	void testGetAvailableFrom() {
+		assertEquals(today, listing1.getAvailableFrom());
+	}
+	
+	@Test
+	void testGetAvailableTo() {
+		assertEquals(today, listing1.getAvailableTo());
+	}
+	
 	@Test
 	void testGetCheckInTime() {
 		assertEquals(rightNow, listing1.getCheckInTime());

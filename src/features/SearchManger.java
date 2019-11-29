@@ -30,7 +30,7 @@ public class SearchManger {
 		
 		if (searchCriteria.getFrom() != null) {
 			listingsStream = listingsStream
-					.filter( p -> p.getAvailableFRom().compareTo(searchCriteria.getFrom()) == 1);
+					.filter( p -> p.getAvailableFrom().compareTo(searchCriteria.getFrom()) == 1);
 		}
 		
 		if (searchCriteria.getMinPrice() != null) {
