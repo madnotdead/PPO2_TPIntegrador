@@ -3,8 +3,8 @@ package rankings;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Property;
-import model.User;
+import bookings.User;
+import properties.Property;
 
 public class RankingSubsystem {
 	private static RankingSubsystem uniqueInstance;
@@ -26,6 +26,9 @@ public class RankingSubsystem {
         }
         return uniqueInstance;
     }
+	public static synchronized void reset() {
+		uniqueInstance = null;
+	}
 
 	/* propiedades */
 	public void addPropertyReviewCategory(ReviewCategory aCategory) {

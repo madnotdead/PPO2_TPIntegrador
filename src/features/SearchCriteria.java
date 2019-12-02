@@ -2,96 +2,42 @@ package features;
 
 import java.time.LocalDate;
 
+import properties.City;
+
 public class SearchCriteria {
 
-	private String city;
-	private LocalDate from;
-	private LocalDate to;
+	private City city;
+	private LocalDate fromDate;
+	private LocalDate toDate;
 	private Integer capacity;
 	private Double minPrice;
 	private Double maxPrice;
 	
-	/**
-	 * @return the city
-	 */
-	public String getCity() {
-		return city;
+	public SearchCriteria(City aCity, LocalDate aDate, LocalDate otherDate, Integer capacity, Double aPrice, Double otherPrice) {
+		this.city = aCity;
+		this.fromDate = aDate;
+		this.toDate = otherDate;
+		this.capacity = capacity;
+		this.minPrice = aPrice;
+		this.maxPrice = otherPrice;
 	}
 	
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity(String city) {
-		this.city = city;
+	public City getCity() {
+		return city;
 	}
-
-	/**
-	 * @return the minPrice
-	 */
 	public Double getMinPrice() {
 		return minPrice;
 	}
-
-	/**
-	 * @param minPrice the minPrice to set
-	 */
-	public void setMinPrice(Double minPrice) {
-		this.minPrice = minPrice;
-	}
-
-	/**
-	 * @return the maxPrice
-	 */
 	public Double getMaxPrice() {
 		return maxPrice;
 	}
-
-	/**
-	 * @param maxPrice the maxPrice to set
-	 */
-	public void setMaxPrice(Double maxPrice) {
-		this.maxPrice = maxPrice;
-	}
-
-	/**
-	 * @return the from
-	 */
 	public LocalDate getFrom() {
-		return from;
+		return fromDate;
 	}
-
-	/**
-	 * @param from the from to set
-	 */
-	public void setFrom(LocalDate from) {
-		this.from = from;
-	}
-
-	/**
-	 * @return the to
-	 */
 	public LocalDate getTo() {
-		return to;
+		return toDate;
 	}
-
-	/**
-	 * @param to the to to set
-	 */
-	public void setTo(LocalDate to) {
-		this.to = to;
-	}
-
-	/**
-	 * @return the capacity
-	 */
 	public Integer getCapacity() {
 		return capacity;
-	}
-
-	/**
-	 * @param capacity the capacity to set
-	 */
-	public void setCapacity(Integer capacity) {
-		this.capacity = capacity;
 	}
 }

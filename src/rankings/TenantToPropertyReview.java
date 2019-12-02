@@ -2,8 +2,8 @@ package rankings;
 
 import java.time.LocalDate;
 
-import model.Property;
-import model.User;
+import bookings.User;
+import properties.Property;
 
 public class TenantToPropertyReview extends Review {
 	private Property property;

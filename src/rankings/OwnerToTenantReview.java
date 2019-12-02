@@ -2,7 +2,7 @@ package rankings;
 
 import java.time.LocalDate;
 
-import model.User;
+import bookings.User;
 
 public class OwnerToTenantReview extends Review {
 	private User tenant;

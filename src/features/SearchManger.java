@@ -1,52 +1,43 @@
 package features;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import model.Listing;
+import bookings.Listing;
+import properties.City;
 
 public class SearchManger {
 
-	private List<Listing> listings;
+	private SearchCriteria searchCriteria;
+	private IListingFilter searchFilter;
 	
-	public SearchManger(List<Listing> listings) {
-		this.listings = listings;
+	public SearchManger(City aCity, LocalDate aDate, LocalDate otherDate, Integer capacity, Double aPrice, Double otherPrice) {
+		this.searchCriteria = new SearchCriteria(aCity, aDate, otherDate, capacity, aPrice, otherPrice);
+		this.searchFilter = this.searchFilter();  
 	}
 	
-	public List<Listing> doSearch(SearchCriteria searchCriteria) {
+	public SearchManger(City aCity, LocalDate aDate, LocalDate otherDate) {
+		this(aCity, aDate, otherDate, null, null, null);
+	}
 
-		Stream<Listing> listingsStream = this.listings.stream();
+	private IListingFilter searchFilter() {
+		AndCompoundFilter searchFilter = new AndCompoundFilter();
+		searchFilter.addFilter(new CityFilter());
+		searchFilter.addFilter(new FromDateFilter());
+		searchFilter.addFilter(new ToDateFilter());
+		searchFilter.addFilter(new CapacityFilter());
+		searchFilter.addFilter(new MinimumPriceFilter());
+		searchFilter.addFilter(new MaximumPriceFilter());
+		return searchFilter;
+	}
+	
+	public List<Listing> doSearch(List<Listing> listings) {
+
+		Stream<Listing> listingsStream = listings.stream();
 		
-		if (searchCriteria.getCity() != null) {
-			listingsStream = listingsStream
-					.filter( p -> p.getProperty().getAddress().getCity().equals(searchCriteria.getCity()));
-		} 
-		
-		if (searchCriteria.getCapacity() != null) {
-			listingsStream = listingsStream
-					.filter( p -> p.getProperty().getCapacity() <= searchCriteria.getCapacity());
-		}
-		
-		if (searchCriteria.getFrom() != null) {
-			listingsStream = listingsStream
-					.filter( p -> p.getAvailableFrom().compareTo(searchCriteria.getFrom()) == 1);
-		}
-		
-		if (searchCriteria.getMinPrice() != null) {
-			listingsStream = listingsStream
-					.filter( p -> p.getPrice() >= searchCriteria.getMinPrice());
-		}
-		
-		if (searchCriteria.getMaxPrice() != null) {
-			listingsStream = listingsStream
-					.filter( p -> p.getPrice() <= searchCriteria.getMaxPrice());
-		}
-		
-		if (searchCriteria.getTo() != null) {
-			listingsStream = listingsStream
-					.filter( p -> p.getAvailableTo().compareTo(searchCriteria.getTo()) == 1);
-		}
+		listingsStream = listingsStream.filter(listing -> searchFilter.match(listing, searchCriteria));
 		
 		return listingsStream.collect(Collectors.toList());
 	}
