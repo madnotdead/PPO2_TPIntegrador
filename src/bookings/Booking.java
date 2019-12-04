@@ -37,6 +37,22 @@ public class Booking {
 	public IBookingState getState() {
 		return state;
 	}
+	public void reject() {
+		this.state.reject(this);
+		
+	}
+	public void cancel() {
+		this.state.cancel(this);
+		
+	}
+	public void approve() {
+		this.state.cancel(this);
+		
+	}
+	public void setState(IBookingState bookingState) {
+		this.state = bookingState;
+		
+	}
 	
 	
 }

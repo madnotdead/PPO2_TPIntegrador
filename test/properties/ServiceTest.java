@@ -13,6 +13,7 @@ class ServiceTest {
 		Service aService = new Service("Agua caliente");
 		assertTrue(aService.equals(aService));
 		assertEquals(aService, aService);
+		assertEquals(aService.hashCode(),aService.hashCode());
 	}
 	
 	@Test

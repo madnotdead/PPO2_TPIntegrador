@@ -15,6 +15,7 @@ class CityTest {
 		City aCity = new City("Sydney", new Country("Australia"));
 		assertTrue(aCity.equals(aCity));
 		assertEquals(aCity, aCity);
+		assertEquals(aCity.hashCode(),aCity.hashCode());
 	}
 	
 	@Test

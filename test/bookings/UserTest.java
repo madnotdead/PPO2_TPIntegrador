@@ -16,9 +16,6 @@ import bookings.User;
 public class UserTest {
 	
 	private User user;
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		user = new User("Juan Perez", "juan@mail.com", "+540119292");
@@ -26,8 +23,17 @@ public class UserTest {
 
 
 	@Test
-	public void test() {
+	public void getNameTest() {
 		assertEquals("Juan Perez", user.getFullName());
 	}
+	@Test
+	public void getMailTest() {
+		assertEquals("juan@mail.com", user.getEmail());
+	}
+	@Test
+	public void getPhoneTest() {
+		assertEquals("+540119292", user.getPhoneNumber());
+	}
+	
 
 }

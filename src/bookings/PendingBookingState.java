@@ -3,21 +3,20 @@ package bookings;
 public class PendingBookingState implements IBookingState {
 
 	@Override
-	public void approve() {
-		// TODO Auto-generated method stub
+	public void approve(Booking booking) {
+		booking.setState(new ApprovedBookingState());
 
 	}
 
 	@Override
-	public void cancel() {
-		// TODO Auto-generated method stub
+	public void cancel(Booking booking) {
+		booking.setState(new CancelledBookingState());
 
 	}
 
 	@Override
-	public void reject() {
-		// TODO Auto-generated method stub
-
+	public void reject(Booking booking) {
+		booking.setState(new RejectedBookingState());
 	}
 
 }

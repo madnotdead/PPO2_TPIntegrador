@@ -13,6 +13,7 @@ class PropertyKindTest {
 		PropertyKind aPropertyKind = new PropertyKind("Choza");
 		assertTrue(aPropertyKind.equals(aPropertyKind));
 		assertEquals(aPropertyKind, aPropertyKind);
+		assertEquals(aPropertyKind.hashCode(),aPropertyKind.hashCode());
 	}
 	
 	@Test

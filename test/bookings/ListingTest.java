@@ -29,6 +29,10 @@ class ListingTest {
 		listing1 = new Listing(mockProperty,today, today, rightNow, rightNow, 2500.0);
 	}
 	@Test
+	void testGetCity() {
+		assertEquals(mockProperty.getAddress().getCity(), listing1.getCity());
+	}
+	@Test
 	void testGetProperty() {
 		assertEquals(mockProperty, listing1.getProperty());
 	}

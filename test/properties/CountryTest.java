@@ -14,6 +14,7 @@ class CountryTest {
 		Country aCountry = new Country("Japón");
 		assertTrue(aCountry.equals(aCountry));
 		assertEquals(aCountry, aCountry);
+		assertEquals(aCountry.hashCode(),aCountry.hashCode());
 	}
 	
 	@Test

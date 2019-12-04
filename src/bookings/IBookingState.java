@@ -1,7 +1,7 @@
 package bookings;
 
 public interface IBookingState {
-	public void approve();
-	public void cancel();
-	public void reject();
+	public void approve(Booking booking);
+	public void cancel(Booking booking);
+	public void reject(Booking booking);
 }
