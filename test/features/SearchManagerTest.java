@@ -33,28 +33,40 @@ class SearchManagerTest {
 		listings.add(listing);
 	}
 
+	private IListingFilter fullSearchFilter() {
+		AndCompoundFilter searchFilter = new AndCompoundFilter();
+		searchFilter.addFilter(new CityFilter());
+		searchFilter.addFilter(new FromDateFilter());
+		searchFilter.addFilter(new ToDateFilter());
+		searchFilter.addFilter(new CapacityFilter());
+		searchFilter.addFilter(new MinimumPriceFilter());
+		searchFilter.addFilter(new MaximumPriceFilter());
+		return searchFilter;
+	}
+
+	/* Hito 1 - 2.b */
 	@Test
 	void testSearchWithRequiredCriteria() {
 		SearchManger searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15));
-		assertTrue(searchManager.doSearch(listings).contains(listing));
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).contains(listing));
 	}
 
 	@Test
 	void testSearchWithoutListings() {
 		SearchManger searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15));
-		assertTrue(searchManager.doSearch(new ArrayList<Listing>()).isEmpty());
+		assertTrue(searchManager.search(this.fullSearchFilter(), new ArrayList<Listing>()).isEmpty());
 	}
 
 	@Test
 	void testSearchOnLimitDates() {
 		SearchManger searchManager = new SearchManger(city, LocalDate.of(2018, 1, 1), LocalDate.of(2018, 2, 1));
-		assertTrue(searchManager.doSearch(listings).contains(listing));
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).contains(listing));
 	}
 
 	@Test
 	void testSearchForDifferentCity() {
 		City otherCity = mock(City.class);
 		SearchManger searchManager = new SearchManger(otherCity, LocalDate.of(2018, 1, 1), LocalDate.of(2018, 2, 1));
-		assertTrue(searchManager.doSearch(listings).isEmpty());
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
 	}
 }

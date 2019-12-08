@@ -2,9 +2,9 @@ package bookings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import properties.*;
-import rankings.RankingSubsystem;
 
 public class BookingSystem {
 	private static BookingSystem uniqueInstance;
@@ -26,10 +26,6 @@ public class BookingSystem {
 		uniqueInstance = null;
 	}
 
-	public RankingSubsystem rankingSubsystem() {
-		return RankingSubsystem.getInstance();
-	}
-	
 	public PropertiesSubsystem propertiesSubsystem() {
 		return PropertiesSubsystem.getInstance();
 	}
@@ -48,18 +44,24 @@ public class BookingSystem {
 		return listings;
 	}
 	
+	public List<Listing> getListingsForPublisher(User publisher) {
+		// Se podría resolver agregando un filtro por autor y usando el Search Manager
+		return listings.stream()
+				.filter(listing -> listing.getPublisher().equals(publisher))
+				.collect(Collectors.toList());
+	}
+
 	public void addBooking(Booking aBooking) {
 		this.bookings.add(aBooking);
 	}
 	public List<Booking> getBookings() {
 		return bookings;
 	}
-	
-	public List<Listing> getListingsForPublisher(User publisher) {
-		return null; /* TODO completar */
-	}
-	
+
 	public List<Booking> getBookingsForTenant(User tenant) {
-		return null; /* TODO completar */
+		return bookings.stream()
+			.filter(booking -> booking.getTenant().equals(tenant))
+			.collect(Collectors.toList());
 	}
+	
 }

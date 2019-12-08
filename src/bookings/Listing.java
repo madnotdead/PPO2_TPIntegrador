@@ -5,6 +5,7 @@ import properties.City;
 import properties.Property;
 
 public class Listing {
+	private LocalDate creationDate; 
 	private Property property;
 	private LocalTime checkInTime;
 	private LocalTime checkOutTime;
@@ -15,6 +16,7 @@ public class Listing {
 
 	public Listing(Property property, LocalDate from, LocalDate to, LocalTime checkIn, LocalTime checkOut, Double price) {
 		super();
+		this.creationDate = LocalDate.now();
 		this.property = property;
 		this.checkInTime = checkIn;
 		this.checkOutTime = checkOut;
@@ -57,5 +59,13 @@ public class Listing {
 	
 	public User getPublisher() {
 		return this.property.getOwner();
+	}
+	
+	public Boolean isLastMinutePromotion() {
+		return this.creationDate.plusDays(7).equals(this.availableFrom) &&
+				(this.availableTo.compareTo(this.creationDate.plusDays(30)) <= 0);
+	}
+	public Boolean isPlannedPromotion() {
+		return this.creationDate.plusDays(180).equals(this.availableFrom);
 	}
 }

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import properties.PropertiesSubsystem;
 import properties.Property;
 
 class BookingSystemTest {
@@ -61,6 +62,7 @@ class BookingSystemTest {
 		assertTrue(bookingSystem.getBookings().contains(booking));
 	}
 	
+	/* Hito 1 - 2.a */
 	@Test
 	void testAddingNewPropertyAndListingIt() {
 		User owner = mock(User.class);
@@ -75,5 +77,23 @@ class BookingSystemTest {
 		
 		assertTrue(bookingSystem.getListings().contains(listing));
 		assertEquals(bookingSystem.getListings().get(0).getPublisher(), owner);
+		assertTrue(bookingSystem.getListingsForPublisher(owner).contains(listing));
+	}
+	
+	@Test
+	void testAllListingsForOwnerHaveRegisteredProperty() {
+		User owner = mock(User.class);
+		Property property = mock(Property.class);
+		when(property.getOwner()).thenReturn(owner);
+		
+		bookingSystem.addUser(owner);
+		bookingSystem.propertiesSubsystem().addProperty(property);
+		
+		Listing listing = new Listing(property, LocalDate.now(), LocalDate.now(), LocalTime.now(), LocalTime.now(), 521.75);
+		bookingSystem.addListing(listing);
+		
+		bookingSystem.getListingsForPublisher(owner).forEach(l ->
+				assertTrue(PropertiesSubsystem.getInstance().getPropertiesForOwner(owner).contains(l.getProperty())));
+
 	}
 }
