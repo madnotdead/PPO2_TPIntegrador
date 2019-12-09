@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import bookings.Listing;
 import properties.City;
+import properties.Property;
 
 class SearchManagerTest {
 
@@ -26,6 +27,7 @@ class SearchManagerTest {
 
 		listing = mock(Listing.class);
 		when(listing.getCity()).thenReturn(city);
+		when(listing.isActive()).thenReturn(true);
 		when(listing.getAvailableFrom()).thenReturn(LocalDate.of(2018, 1, 1));
 		when(listing.getAvailableTo()).thenReturn(LocalDate.of(2018, 3, 1));
 
@@ -59,14 +61,52 @@ class SearchManagerTest {
 
 	@Test
 	void testSearchOnLimitDates() {
-		SearchManger searchManager = new SearchManger(city, LocalDate.of(2018, 1, 1), LocalDate.of(2018, 2, 1));
+		SearchManger searchManager;
+
+		searchManager = new SearchManger(city, LocalDate.of(2018, 1, 1), LocalDate.of(2018, 2, 1));
 		assertTrue(searchManager.search(this.fullSearchFilter(), listings).contains(listing));
-	}
+
+		searchManager = new SearchManger(city, LocalDate.of(2017, 1, 1), LocalDate.of(2018, 2, 1));
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
+
+		searchManager = new SearchManger(city, LocalDate.of(2018, 1, 1), LocalDate.of(2019, 2, 1));
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
+}
 
 	@Test
 	void testSearchForDifferentCity() {
 		City otherCity = mock(City.class);
 		SearchManger searchManager = new SearchManger(otherCity, LocalDate.of(2018, 1, 1), LocalDate.of(2018, 2, 1));
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
+	}
+
+	@Test
+	void testSearchWithFullCriteria() {
+		SearchManger searchManager;
+		Property property = mock(Property.class);
+		when(property.getCapacity()).thenReturn(5);
+	
+		when(listing.getProperty()).thenReturn(property);
+		when(listing.getPrice()).thenReturn(175.5);
+
+		searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15), 4, 150.0, 200.0);
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).contains(listing));
+
+		searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15), 8, 150.0, 200.0);
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
+
+		searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15), 4, 200.0, 250.0);
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
+
+		searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15), 4, 150.0, 170.0);
+		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
+}
+
+	@Test
+	void testSearchWhenListingIsNotActive() {
+		when(listing.isActive()).thenReturn(false);
+		
+		SearchManger searchManager = new SearchManger(city, LocalDate.of(2018, 2, 1), LocalDate.of(2018, 2, 15));
 		assertTrue(searchManager.search(this.fullSearchFilter(), listings).isEmpty());
 	}
 }

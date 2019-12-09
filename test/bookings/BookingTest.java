@@ -21,21 +21,26 @@ class BookingTest {
 
 	@Test
 	void testGetListing() {
-		assertEquals(booking1.getListing(), listing1);
+		assertEquals(listing1, booking1.getListing());
 	}
 
 	@Test
 	void testGetCheckInDate() {
-		assertEquals(booking1.getCheckInDate(), LocalDate.of(2019, 12, 2));
+		assertEquals(LocalDate.of(2019, 12, 2), booking1.getCheckInDate());
 	}
 
 	@Test
 	void testGetCheckOutDate() {
-		assertEquals(booking1.getCheckOutDate(), LocalDate.of(2019, 12, 9));
+		assertEquals(LocalDate.of(2019, 12, 9), booking1.getCheckOutDate());
 	}
 
 	@Test
 	void testGetTenant() {
-		assertEquals(booking1.getTenant(), tenant1);
+		assertEquals(tenant1, booking1.getTenant());
+	}
+	
+	@Test
+	void testGetState() {
+		assertTrue(booking1.getState().isPending());
 	}
 }

@@ -46,8 +46,12 @@ public class Booking {
 		
 	}
 	public void approve() {
-		this.state.cancel(this);
-		
+		this.state.approve(this);
+	}
+	public void approveWhenPending() {
+		this.setState(new ApprovedBookingState());
+		this.listing.deactivate();
+		BookingSystem.getInstance().sendByEMail(this);
 	}
 	public void setState(IBookingState bookingState) {
 		this.state = bookingState;

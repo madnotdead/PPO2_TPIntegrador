@@ -81,14 +81,14 @@ class ListingTest {
 	void testIsActiveAndThenDeactivate() {
 		assertTrue(listing1.isActive());
 		listing1.deactivate();
-		assertTrue(!listing1.isActive());
+		assertFalse(listing1.isActive());
 	}
 	
 	@Test
 	void testPlannedPromotion() {
 		Listing listing2;
-		
-		assertTrue(!listing1.isPlannedPromotion());
+
+		assertFalse(listing1.isPlannedPromotion());
 		
 		listing2 = new Listing(mockProperty, LocalDate.now().plusDays(180), LocalDate.now().plusDays(190), rightNow, rightNow, 2500.0);
 		assertTrue(listing2.isPlannedPromotion());
@@ -98,7 +98,7 @@ class ListingTest {
 	void testLastMinutePromotion() {
 		Listing listing2;
 		
-		assertTrue(!listing1.isLastMinutePromotion());
+		assertFalse(listing1.isLastMinutePromotion());
 		
 		listing2 = new Listing(mockProperty, LocalDate.now().plusDays(7), LocalDate.now().plusDays(30), rightNow, rightNow, 2500.0);
 		assertTrue(listing2.isLastMinutePromotion());
@@ -107,6 +107,6 @@ class ListingTest {
 		assertTrue(listing2.isLastMinutePromotion());
 
 		listing2 = new Listing(mockProperty, LocalDate.now().plusDays(7), LocalDate.now().plusDays(40), rightNow, rightNow, 2500.0);
-		assertTrue(!listing2.isLastMinutePromotion());
+		assertFalse(listing2.isLastMinutePromotion());
 	}
 }

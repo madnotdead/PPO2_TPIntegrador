@@ -63,5 +63,7 @@ public class BookingSystem {
 			.filter(booking -> booking.getTenant().equals(tenant))
 			.collect(Collectors.toList());
 	}
-	
+	public void sendByEMail(Booking aBooking) {
+		System.out.printf("Mail to: %s", aBooking.getTenant().getEmail());
+	}
 }

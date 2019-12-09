@@ -24,8 +24,8 @@ public class SearchManger {
 
 		Stream<Listing> listingsStream = listings.stream();
 		
-		listingsStream = listingsStream.filter(listing -> searchFilter.match(listing, searchCriteria));
-		
+		listingsStream = listingsStream.filter(listing -> listing.isActive() && searchFilter.match(listing, searchCriteria));
+
 		return listingsStream.collect(Collectors.toList());
 	}
 }

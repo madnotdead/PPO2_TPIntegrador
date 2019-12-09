@@ -4,8 +4,7 @@ public class PendingBookingState implements IBookingState {
 
 	@Override
 	public void approve(Booking booking) {
-		booking.setState(new ApprovedBookingState());
-
+		booking.approveWhenPending();
 	}
 
 	@Override
@@ -18,5 +17,16 @@ public class PendingBookingState implements IBookingState {
 	public void reject(Booking booking) {
 		booking.setState(new RejectedBookingState());
 	}
+	
+	@Override
+	public Boolean isPending() { return true; }
 
+	@Override
+	public Boolean isApproved() { return false; }
+
+	@Override
+	public Boolean isRejected() { return false; }
+
+	@Override
+	public Boolean isCancelled() { return false; }
 }
